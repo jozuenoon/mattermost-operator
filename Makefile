@@ -19,6 +19,8 @@ PACKAGES=$(shell go list ./...)
 TEST_PACKAGES=$(shell go list ./...| grep -v test/e2e)
 INSTALL_YAML=docs/mattermost-operator/mattermost-operator.yaml
 
+export GO111MODULE=on
+
 all: check-style unittest build ## Run all the things
 
 unittest: ## Runs unit tests
