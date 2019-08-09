@@ -51,7 +51,7 @@ func TestMattermost(t *testing.T) {
 	f := framework.Global
 
 	t.Run("mysql operator ready", func(t *testing.T) {
-		err = e2eutil.WaitForDeployment(t, f.KubeClient, "mysql-operator", "mysql-operator", 1, retryInterval, timeout)
+		err = waitForStatefulSet(t, f.Client.Client, "mysql-operator", "mysql-operator", 1, retryInterval, timeout)
 		require.NoError(t, err)
 	})
 	t.Run("minio operator ready", func(t *testing.T) {
